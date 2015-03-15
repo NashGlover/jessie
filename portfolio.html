@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Jessie Glover - Portfolio</title>
+		<script type="text/javascript" src="jquery-1.4.min.js"></script>
+		<script type="text/javascript" language="javascript">
+			jQuery.fn.center = function () {
+				this.css("position","absolute");
+				this.css("top", ( $(window).height() - this.height() ) / 2+$(window).scrollTop() + "px");
+				this.css("left", ( $(window).width() - this.width() ) / 2+$(window).scrollLeft() + "px");
+				return this;
+			}
+
+			$(document).ready(function() {		
+				$("#thumbnail img").click(function(e){
+		
+					$("#background").css({"opacity" : "0.7"})
+									.fadeIn("slow");			
+						
+					$("#large").html("<img src='"+$(this).parent().attr("href")+"' alt='"+$(this).attr("alt")+"' /><br/>"+$(this).attr("rel")+"")
+							   .center()
+							   .fadeIn("slow");			
+			
+					return false;
+				});
+			
+				$(document).keypress(function(e){
+					if(e.keyCode==27){
+						$("#background").fadeOut("slow");
+						$("#large").fadeOut("slow");
+					}
+				});
+		
+				$("#background").click(function(){
+					$("#background").fadeOut("slow");
+					$("#large").fadeOut("slow");
+				});
+		
+				$("#large").click(function(){
+					$("#background").fadeOut("slow");
+					$("#large").fadeOut("slow");
+				});
+		
+			});
+		</script>
+		<style>
+		img {
+			border: none;
+		}
+		#thumbnail img {
+			cursor: pointer;	
+		}
+		#large {
+			display: none;
+			position: absolute;		
+			background: #FFFFFF;	
+			padding: 5px;
+			z-index: 10;
+			min-height: 200px;
+			min-width: 200px;
+			color: #336699;
+		}
+		#background{
+			display: none;
+			position: absolute;
+			height: 100%;
+			width: 100%;
+			top: 0;
+			left: 0;
+			background: #000000;	
+			z-index: 1;
+		}
+		</style>
+		<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+	<body>
+		<div id="page">
+			<div id="heading">
+				<img class="center" src="images/logo.png"><h1>Jessie Glover</h1><h2>Professional Makeup Artist</h2>
+			</div>
+			<ul id="navigation">
+				<li><a href="/">Home</a></li>
+				<li><a href="/about.html">About</a></li>
+				<li><a href="/portfolio.html" class="on">Portfolio</a></li>
+				<li><a href="/contact.html">Contact</a></li>
+			</ul>
+			<div id="portfolio">
+			<h3>Jessie's Portfolio</h3><p>Click on thumbnails for full size pictures.</p>
+				<div id="thumbnail">
+			<a href="portfolio/1.jpg"><img class="smallpic" src="portfolio/1_thumb.jpg" /></a>
+			<a href="portfolio/2.jpg"><img class="smallpic" src="portfolio/2_thumb.jpg" /></a>
+			<a href="portfolio/3.jpg"><img src="portfolio/3_thumb.jpg" /></a>
+			<a href="portfolio/4.jpg"><img src="portfolio/4_thumb.jpg" /></a>
+			<a href="portfolio/5.jpg"><img src="portfolio/5_thumb.jpg" /></a>
+			<a href="portfolio/6.jpg"><img src="portfolio/6_thumb.jpg" /></a>
+	   </div> 
+		</div>
+	</body>
+</html>
